@@ -37,7 +37,7 @@ To merge this dicts just make:
 ```
 >>> dict_list = [dictA, dictB, dictC]
 >>> set_keys = ['weapons', 'equipments']
->>> merged_dict = dictmerge(dict_list, keys_list)
+>>> merged_dict = dictmerge(dict_list, set_keys)
 >>> merged_dict
 
 {
