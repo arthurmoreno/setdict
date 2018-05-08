@@ -1,6 +1,6 @@
 import collections
 
-from utils import encode_list, decode_list
+from setdict.utils import encode_list, decode_list, obj_to_hash
 
 
 class SetDict(collections.MutableMapping):
@@ -47,13 +47,25 @@ class SetDict(collections.MutableMapping):
                 self.store[key] = new_list
         else:
             self.store[key] = value
-    
-    def update(self, iterable=None, set_keys=[]):
+
+    def merge_set(self, key, list_to_merge):
+        if isinstance(list_to_merge, list):
+            try:
+                hashed_key_set = set(encode_list(self.store[key]))
+                hashed_set_to_merge = set(encode_list(list_to_merge))
+                merged_set = hashed_key_set.union(hashed_set_to_merge)
+                self.store[key] = decode_list(list(merged_set))
+            except KeyError:
+                self.store[key] = list_to_merge
+        else:
+            raise Exception('list_to_merge is not a list')
+
+    def update(self, iterable=None):
         if isinstance(iterable, collections.MutableMapping):
             for key, value in iterable.items():
-                if key in set_keys:
-                    self.add_to_set(key, value)
+                if type(value) == list:
+                    self.merge_set(key, value)
                 else:
-                    self.store[key] = value
+                    self.add_to_set(key, value)
         else:
-            raise Exception('akushefkuashef')
+            raise Exception('iterable is not a collections.MutableMapping')
