@@ -1,8 +1,9 @@
 import sys
+import setuptools
 from distutils.core import setup
 
 
-setup(name='setdict',
+setup(name='set-dict',
       version='0.0.1',
       author='Arthur Moreno',
       author_email='morenoarthur@gmail.com',

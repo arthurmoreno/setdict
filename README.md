@@ -8,7 +8,7 @@ The add_to_set method in SetDict class is very similar to MongoDB $AddToSet comm
 
 Just install with pip
 ```
-pip install -e git+https://github.com/arthurmoreno/setdict.git#egg=SetDict
+pip install set-dict
 ```
 
 ## Usage
@@ -35,9 +35,9 @@ dictC = {
 To merge this dicts just make:
 
 ```
+>>> from setdict.dictmerge import dictmerge
 >>> dict_list = [dictA, dictB, dictC]
->>> set_keys = ['weapons', 'equipments']
->>> merged_dict = dictmerge(dict_list, set_keys)
+>>> merged_dict = dictmerge(dict_list)
 >>> merged_dict
 
 {
