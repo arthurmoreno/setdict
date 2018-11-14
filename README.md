@@ -1,5 +1,6 @@
 # SetDict
 [![PyPI version](https://badge.fury.io/py/set-dict.svg)](https://badge.fury.io/py/set-dict)
+![Test Coverage](coverage.svg)
 
 If you want to merge Python Dicts into a single one, but want some keys to have set property (but remains as a list). Than this package is for you.
 
